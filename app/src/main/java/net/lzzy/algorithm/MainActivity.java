@@ -61,11 +61,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (items[j]>items[j+1])
                 {
                     int temp;
-
                     temp=items[j];
-
                     items[j]=items[j+1];
-
                     items[j+1]=temp;
                 }
             }
