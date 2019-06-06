@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Random;
 
@@ -54,8 +55,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void directSort() {
         //todo:直接选择排序的具体实现
-    }
+        int num=10;
+        for (int i=0;i<num-1;i++){
+            for (int j=0;j<num-1;j++){
+                if (items[j]>items[j+1])
+                {
+                    int temp;
 
+                    temp=items[j];
+
+                    items[j]=items[j+1];
+
+                    items[j+1]=temp;
+                }
+            }
+        }
+    }
     private void generateItems() {
         items = new Integer[10];
         Random generator = new Random();
