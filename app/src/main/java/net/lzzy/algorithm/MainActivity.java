@@ -84,6 +84,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void swap(int k, int i) {
+        int tmp =items[k];
+        items[k]=items[i];
+        items[i]=tmp;
     }
 
     private void generateItems() {
