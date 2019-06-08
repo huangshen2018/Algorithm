@@ -58,17 +58,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //分为有序区和无序区，每一趟排序都在无序区依次对比，记录对比区域的最小元素的位置
         //然后把无序区第一个元素和所记录的最小元素进行交换，无序区少一个，有序区多一个，循环往复直至无序区
         //元素数量为0；
- //=============================================================
-        for (int i=0;i<items.length-1;i++){
-            int k=i;
-            for (int j=i+1;j<items.length;j++){
-                if (items[k].compareTo(items[j])>0){
-                    k=j;
+        //=============================================================
+        for (int i = 0; i < items.length - 1; i++) {
+            int k = i;
+            for (int j = i + 1; j < items.length; j++) {
+                if (items[k].compareTo(items[j]) > 0) {
+                    k = j;
                 }
             }
-                swap(k,i);
+            swap(k, i);
         }
-
+    }
 
 //        int num=10;
 //        for (int i=0;i<num-1;i++){
@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                }
 //            }
 //        }
-    }
 
     private void swap(int k, int i) {
         int tmp =items[k];
