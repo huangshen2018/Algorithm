@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //分为有序区和无序区，每一趟排序都在无序区依次对比，记录对比区域的最小元素的位置
         //然后把无序区第一个元素和所记录的最小元素进行交换，无序区少一个，有序区多一个，循环往复直至无序区
         //元素数量为0；
-        //=============================================================
+//=============================================================
         for (int i = 0; i < items.length - 1; i++) {
             int k = i;
             for (int j = i + 1; j < items.length; j++) {
@@ -68,8 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             swap(k, i);
         }
-    }
-
+//=============================================================
 //        int num=10;
 //        for (int i=0;i<num-1;i++){
 //            for (int j=0;j<num-1;j++){
@@ -81,6 +80,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                }
 //            }
 //        }
+//==========================================================================================
+        //todo:直接插入排序的具体实现
+        //分为有序区域和无序区域，每一趟都先跟后面一个无序区域的对比，对比记录无序区域和有序区域中最小的那个数放在RO篮子里面
+        //然后无序区域跟有序区域的值对比依次排列，无序区域中的那个值放到有序区域中
+
+    }
 
     private void swap(int k, int i) {
         int tmp =items[k];
@@ -95,4 +100,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             items[i] = generator.nextInt(99);
         }
     }
+
 }
