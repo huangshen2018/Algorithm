@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 swap(k,i);
         }
 
-
+//
 //        int num=10;
 //        for (int i=0;i<num-1;i++){
 //            for (int j=0;j<num-1;j++){
