@@ -36,7 +36,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 displayItems(edtItems);
                 break;
             case R.id.activity_main_btn_sort:
-                directSort();
+                //directSort();
+                insertsort();
                 displayItems(tvResult);
                 break;
             default:
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             swap(k, i);
         }
+    }
 //=============================================================
 //        int num=10;
 //        for (int i=0;i<num-1;i++){
@@ -84,8 +86,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //todo:直接插入排序的具体实现
         //分为有序区域和无序区域，每一趟都先跟后面一个无序区域的对比，对比记录无序区域和有序区域中最小的那个数放在RO篮子里面
         //然后无序区域跟有序区域的值对比依次排列，无序区域中的那个值放到有序区域中
+//===========================================================================
+        private void insertsort() {
+            for (int i = 1; i < items.length; i++) {
+                int j = i - 1;
+                if (items[j].compareTo(items[i]) < 0) {
+                    continue;
+                }
+                Integer tmg = items[i];
+                while (j >= 0 && items[j].compareTo(tmg) > 0) {
 
-    }
+                    items[j + 1] = items[j];
+                    j--;
+                }
+                items[j + 1] =tmg;
+            }
+        }
+
 
     private void swap(int k, int i) {
         int tmp =items[k];
