@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Arrays;
 import java.util.Calendar;
@@ -37,15 +38,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.activity_main_btn_sort:
                 //directSort();
-                insertsort();
-                displayItems(tvResult);
+                Damon sort=new Damon(items);
+                String result=sort.getResult();
+                Toast.makeText(this, "总时长",
+                        Toast.LENGTH_SHORT).show();
+                tvResult.setText(result);
                 break;
+//                insertsort();
+//                displayItems(tvResult);
+//                break;
             default:
                 break;
         }
     }
 
-    private void displayItems(TextView tv) {
+    public void displayItems(TextView tv) {
         String display = "";
         for (Integer i : items) {
             display = display.concat(i + ",");
@@ -54,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tv.setText(display);
     }
 
-    private void directSort() {
+    public void directSort() {
         //todo:直接选择排序的具体实现
         //分为有序区和无序区，每一趟排序都在无序区依次对比，记录对比区域的最小元素的位置
         //然后把无序区第一个元素和所记录的最小元素进行交换，无序区少一个，有序区多一个，循环往复直至无序区
@@ -87,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //分为有序区域和无序区域，每一趟都先跟后面一个无序区域的对比，对比记录无序区域和有序区域中最小的那个数放在RO篮子里面
         //然后无序区域跟有序区域的值对比依次排列，无序区域中的那个值放到有序区域中
 //===========================================================================
-        private void insertsort() {
+        public void insertsort() {
             for (int i = 1; i < items.length; i++) {
                 int j = i - 1;
                 if (items[j].compareTo(items[i]) < 0) {
@@ -104,13 +111,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
 
-    private void swap(int k, int i) {
+    public void swap(int k, int i) {
         int tmp =items[k];
         items[k]=items[i];
         items[i]=tmp;
     }
 
-    private void generateItems() {
+    public void generateItems() {
         items = new Integer[10];
         Random generator = new Random();
         for (int i = 0; i < items.length; i++) {
