@@ -7,35 +7,63 @@ import javax.xml.datatype.Duration;
  * Description:
  */
  public abstract class BaseSort <T extends Comparable<? super T>> {
+
+    //region l.field字段   最小权限原则
+
     T[] items;
-    long duration;
+    private long duration;
     private int compareCount;
     private int swapCount;
     int moveStep;
 
-    private int swapMovie;
-    BaseSort(T[]items){
-
+    //endregion
+    BaseSort(T[] items) {
+        this.items = items;
+        compareCount = 0;
+        swapCount = 0;
+        moveStep = 0;
     }
 
-    public void sort(){
-        long start = System.currentTimeMillis();
-        for (int i=1;i<items.length;i++){
-            int j = i-1;
-            if (new T(items[i],items[j])){
-                continue;
-            }
-            Integer tmp= (Integer) items[i];
-            while (!(!(j >= 0) || !new T(items[j], tmp))){
-                items[j+1]=items[j];
-                moveStep++;
-                j--;
-            }
-            items[j+i]= (T) tmp;
+    boolean bigger(T a, T b) {
+        compareCount++;
+        return a.compareTo(b) > 0;
+    }
+
+    void swap(int i, int j) {
+        T tmp = items[i];
+        items[i] = items[j];
+        items[j] = tmp;
+    }
+
+    public String getResult() {
+        String display = "";
+        for (T i : items) {
+            display = display.concat(i + ",");
         }
-        duration=System.currentTimeMillis()-start;
+        return display.substring(0, display.length() - 1);
     }
 
-    public abstract String getResult();
+    public void sortWithTime() {
+        long start = System.currentTimeMillis();
+        sort();
+        duration = System.currentTimeMillis() - start;
+    }
 
+    abstract void sort();
+
+    public long getDuration() {
+        return duration;
+    }
+
+    public int getCompareCount() {
+        return compareCount;
+    }
+
+    public int getSwapCount() {
+        return swapCount;
+    }
+
+    public int getMoveStep() {
+        return moveStep;
+    }
 }

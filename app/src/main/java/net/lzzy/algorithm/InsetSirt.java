@@ -9,24 +9,25 @@ import java.util.TimerTask;
  * Created by lzzy_gxy on 2019/6/15.
  * Description:
  */
-public abstract class InsetSirt<T extends Comparable<? super T>>extends BaseSort   {
-    InsetSirt(Comparable[] items) {
+public  class InsetSirt<T extends Comparable<? super T>>extends BaseSort<T>{
+    InsetSirt(T[] items) {
         super(items);
     }
-    public void sort(){
-        long start=System.currentTimeMillis();
+    @Override
+    void sort(){
         for (int i=1;i<items.length;i++){
             int j=i-1;
-            if (items[j].compareTo(items[i])<0){
+            if (bigger(items[i],items[j])){
                 continue;
             }
             T num=(T)items[i];
-            while (j>=0&&items[j].compareTo(num)>0){
+            while (j>=0&&bigger(items[j],num)){
                 items[j+1]=items[j];
-                j--;
                 moveStep++;
-            }items[j+1]=num;
+                j++;
+            }
+            items[j+1]=num;
         }
-        duration=System.currentTimeMillis();
+       // duration=System.currentTimeMillis();
     }
 }
