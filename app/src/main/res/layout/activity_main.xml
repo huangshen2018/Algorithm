@@ -11,7 +11,7 @@
         android:id="@+id/activity_main_tv_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
         tools:text="1,2,3,4,5,6,7"/>
     <EditText
@@ -25,11 +25,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Spinner
-            android:id="@+id/activity_main_btn_sp"
+            android:id="@+id/sp"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content">
+
+        </Spinner>
         <Button
             android:id="@+id/activity_main_btn_generate"
             android:layout_width="wrap_content"
@@ -41,26 +42,28 @@
             android:layout_height="wrap_content"
             android:text="排序"/>
     </LinearLayout>
-    <View
-        android:background="@color/colorPrimaryDark"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"/>
+
     <LinearLayout
-        android:id="@+id/activity_main_btn_container"
-        android:orientation="horizontal"
+        android:id="@+id/ll"
         android:layout_width="match_parent"
+        android:layout_height="114dp"
+        tools:ignore="Orientation"></LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <Spinner
-            android:id="@+id/activity_main_sp_search"
-            android:layout_width="0dp"
+            android:id="@+id/sp2"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1">
+
+        </Spinner>
+
         <Button
-            android:id="@+id/activty_main_btn_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/bt"
+            android:layout_width="132dp"
+            android:layout_height="59dp"
             android:text="生成查找数组" />
     </LinearLayout>
 </LinearLayout>

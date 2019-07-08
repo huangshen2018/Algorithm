@@ -5,23 +5,27 @@ package net.lzzy.algorithm;
  * Description:
  */
 public class SortFactory {
-    public static <T extends Comparable<? super T>> BaseSort<T> getInstance(int key, T[] items) {
+    public static <T extends Comparable<? super T>> BaseSort<T> getInstance(int key,T[] items){
         BaseSort<T> sort;
-        switch (key) {
+        switch (key){
             case 0:
-                sort = new Damon<>(items);
+                //--
+                sort=new DirectSort<>(items);
                 break;
             case 1:
-                sort = new InsetSirt<>(items);
+                sort=new InsertSort<>(items);
                 break;
             case 2:
-                sort = new ShellSort<>(items);
+                sort=new ShellSort<>(items);
                 break;
             case 3:
                 sort=new BubbleSort<>(items);
                 break;
+
             default:
                 return null;
+
+
         }
         return sort;
     }

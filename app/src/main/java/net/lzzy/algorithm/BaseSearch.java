@@ -4,78 +4,66 @@ package net.lzzy.algorithm;
  * Created by lzzy_gxy on 2019/6/27.
  * Description:
  */
-public  abstract class BaseSearch <T extends Comparable<? super T>> {
-
-
+public abstract class BaseSearch <T extends Comparable<? super T>> {
     T[] items;
-    private long duration;
-    private int compareCount;
-    private int swapCount;
-    int moveStep;
-    //endregion
-    BaseSearch(T[] items) {
-        this.items = items;
-        compareCount = 0;
-        swapCount = 0;
-        moveStep = 0;
-    }
-    boolean equal(T a,T b){
+    long duration;
+    private   int compareCount;
+    private   int swapCount;
+    boolean equal(T a, T b){
         compareCount++;
-        return  a.compareTo(b)==0;
+        return a.compareTo(b)==0;
+        //比较
     }
-
-    int compare (T a,T b){
+    int compare(T a,T b){
         compareCount++;
         return a.compareTo(b);
     }
-    abstract int search(T key);
-    protected BaseSearch(){
+    //--
 
-    }
-    public long getDuration(){
-        return duration;
-    }
+    //========================================
+    BaseSearch(){}
+
+    public abstract int search(T key);
     public void setDuration(long duration){
         this.duration=duration;
     }
-    public int getCompareCount(){
-        return swapCount;
-    }
-    public void setCompareCount(int compareCount){
+    public void setCompareCount(long duration){
         this.compareCount=compareCount;
     }
-     public int getSwapCount(){
-        return
-     }
 
+    public BaseSearch(T[] items){
+        this. items=  items;
+        duration=0;
+        compareCount=0;
+        swapCount=0;
 
-
-
-
-    boolean bigger(T a, T b) {
-        compareCount++;
-        return a.compareTo(b) > 0;
     }
+    public int getSwapCount() {
+        return swapCount;
 
-    void swap(int i, int j) {
-        T tmp = items[i];
-        items[i] = items[j];
-        items[j] = tmp;
     }
+//===============================================
 
-    public String getResult(){
+
+    public long getDuration(){
+        return duration;
+    }
+    //=============================================
+
+    public long getcompareCount(){
+        return compareCount;
+    }
+//=============================================
+
+    //============================================
+    public String getconut(){
         String display = "";
         for (T i : items) {
             display = display.concat(i + ",");
         }
-        return display.substring(0,display.length()-1);
-    }
+        display = display.substring(0, display.length() - 1);
 
-    public void sortWithTime(){
-        long start = System.currentTimeMillis();
-        sort();
-        duration = System.currentTimeMillis() - start;
+        return display;
     }
-
 }
 
